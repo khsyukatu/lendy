@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: borrow_conditions
+#
+#  id         :integer          not null, primary key
+#  bank       :string(255)
+#  amount     :integer
+#  rate_type  :integer
+#  rate       :float
+#  user_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bank: MyString
+  amount: 1
+  rate_type: 1
+  user_id: 
+
+two:
+  bank: MyString
+  amount: 1
+  rate_type: 1
+  user_id: 

@@ -1,0 +1,59 @@
+<h2>会員情報の追加</h2>
+<%= form_for(@business_profile, html: { class: "form-horizontal" }) do |f| %>
+
+  <% if @business_profile.errors.any? %>
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @business_profile.errors.count %>個のエラーがあります</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @business_profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+<fieldset>
+  <legend>会員情報追加</legend>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">勤務状況</label>
+    <div class="col-lg-10">
+      <%= f.select(:job_status, [["学生（内定なし）", 1], ["学生（内定済み）", 2], ["勤務中", 3], ["無職", 4]], { include_blank: true } ,{ class: "form-control" } ) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">会社名</label>
+    <div class="col-lg-10">
+      <%= f.text_field :company, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">雇用形態</label>
+    <div class="col-lg-10">
+      <%= f.select(:job_type, [["正社員", 1], ["事務・一般職", 2], ["契約社員", 3], ["アルバイト", 3]], { include_blank: true } ,{ class: "form-control" } ) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">役職</label>
+    <div class="col-lg-10">
+      <%= f.text_field :job_title, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-lg-2 control-label">年収</label>
+    <div class="col-lg-10">
+      <%= f.number_field :income, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-lg-10 col-lg-offset-2">
+      <%= f.submit class: "btn btn-success" %>
+    </div>
+  </div>
+</fieldset>
+<% end %>

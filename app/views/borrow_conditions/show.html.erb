@@ -1,0 +1,24 @@
+<h2>借入詳細</h2>
+<table class="table table-hover">
+  <thead>
+    <tr class="success">
+      <th>メールアドレス</th>
+      <th>金融機関名</th>
+      <th>借入金額</th>
+      <th>借入タイプ</th>
+      <th>借入金利</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @borrow_condition.user.email %></td>
+      <td><%= @borrow_condition.bank %></td>
+      <td><%= @borrow_condition.amount %></td>
+      <td><%= @borrow_condition.rate_type %></td>
+      <td><%= @borrow_condition.rate %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "提案する", new_proposal_path(borrow_condition_id: @borrow_condition), class:"btn btn-success" %>

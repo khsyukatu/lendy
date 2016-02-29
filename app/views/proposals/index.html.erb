@@ -1,0 +1,25 @@
+<h2>提案一覧</h2>
+<table class="table table-hover">
+  <thead>
+    <tr class="success">
+      <th>金融機関名</th>
+      <th>提案金額</th>
+      <th>提案タイプ</th>
+      <th>提案金利</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @proposals.each do |proposal| %>
+    <tr>
+      <td><%= proposal.lender.name %></td>
+      <td><%= proposal.amount %></td>
+      <td><%= proposal.rate_type %></td>
+      <td><%= proposal.rate %></td>
+      <td><%= link_to "詳細", proposal_path(proposal), class:"btn btn-success" %></td>
+      <td><%= link_to "承諾済み", proposal_path(proposal), class:"btn btn-primary", disabled: true if proposal.choiced == true %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

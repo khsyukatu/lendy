@@ -1,0 +1,33 @@
+# == Schema Information
+#
+# Table name: proposals
+#
+#  id                  :integer          not null, primary key
+#  borrow_condition_id :integer
+#  lender_id           :integer
+#  rate                :float
+#  rate_type           :integer
+#  amount              :integer
+#  description         :text
+#  choiced             :boolean
+#  created_at          :datetime
+#  updated_at          :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  lender_id: 
+  rate: 1.5
+  rate_type: 1
+  amount: 1
+  description: MyText
+
+two:
+  user_id: 
+  lender_id: 
+  rate: 1.5
+  rate_type: 1
+  amount: 1
+  description: MyText
