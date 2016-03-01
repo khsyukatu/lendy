@@ -80,7 +80,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { :host => 'unistyleinc.com' } # host指定
+  config.action_mailer.default_url_options = { :host => 'lendy.herokuapp.com' } # host指定
   config.action_mailer.delivery_method = :smtp
   # 適宜設定を変更
   config.action_mailer.smtp_settings = {
