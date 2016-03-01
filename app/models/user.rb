@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   has_one :user_profile, :dependent => :destroy
+  has_one :school_profile, :dependent => :destroy
   has_one :business_profile, :dependent => :destroy
   has_one :borrow_condition, :dependent => :destroy
   has_many :proposals, through: :borrow_condition, :dependent => :destroy

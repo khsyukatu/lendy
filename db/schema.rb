@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160228011631) do
+ActiveRecord::Schema.define(version: 20160301081715) do
 
   create_table "borrow_conditions", force: true do |t|
     t.string   "bank"
@@ -76,15 +76,31 @@ ActiveRecord::Schema.define(version: 20160228011631) do
   add_index "proposals", ["borrow_condition_id"], name: "index_proposals_on_borrow_condition_id"
   add_index "proposals", ["lender_id"], name: "index_proposals_on_lender_id"
 
-  create_table "user_profiles", force: true do |t|
-    t.string   "school_name"
-    t.integer  "school_type"
-    t.string   "school_department"
-    t.integer  "school_status"
-    t.date     "birthday"
+  create_table "school_profiles", force: true do |t|
+    t.string   "name"
+    t.string   "department"
+    t.date     "graduation"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  add_index "school_profiles", ["user_id"], name: "index_school_profiles_on_user_id"
+
+  create_table "user_profiles", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "name2"
+    t.string   "yomi"
+    t.string   "yomi2"
+    t.string   "tel"
+    t.string   "zipcode"
+    t.string   "prefecture"
+    t.string   "city"
+    t.string   "apartment"
+    t.date     "birthday"
   end
 
   add_index "user_profiles", ["user_id"], name: "index_user_profiles_on_user_id"

@@ -1,0 +1,48 @@
+<h2>学校情報の追加</h2>
+<%= form_for(@school_profile, html: { class: "form-horizontal" }) do |f| %>
+
+  <% if @school_profile.errors.any? %>
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= @school_profile.errors.count %>個のエラーがあります</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @school_profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+<fieldset>
+  <legend>会員情報追加</legend>
+  <div class="form-group">
+    <label class="col-lg-2 control-label">学校名</label>
+    <div class="col-lg-10">
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-lg-2 control-label">学部学科</label>
+    <div class="col-lg-10">
+      <%= f.text_field :department, class: "form-control" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label class="col-lg-2 control-label">卒業年月</label>
+    <div class="col-lg-10">
+      <%= f.date_select :graduation, { start_year: 1985, end_year: 2000, discard_day: true }, { class: "form-control" }  %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-lg-10 col-lg-offset-2">
+      <%= f.submit class: "btn btn-success" %>
+    </div>
+  </div>
+</fieldset>
+<% end %>

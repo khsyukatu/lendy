@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: school_profiles
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  department :string(255)
+#  graduation :date
+#  user_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  department: MyString
+  graduation: 2016-03-01
+  user_id: 
+
+two:
+  name: MyString
+  department: MyString
+  graduation: 2016-03-01
+  user_id: 

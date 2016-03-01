@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: "main#index"
   get 'main/index'
   get 'mypage', to: 'mypage#index'
-  resources :user_profiles, :business_profiles, :only => [:new, :create, :edit, :update, :destroy]
+  resources :user_profiles, :school_profiles, :business_profiles, :only => [:new, :create, :edit, :update, :destroy]
   resources :borrow_conditions, :proposals
   post 'proposals/choice_proposal'
   
