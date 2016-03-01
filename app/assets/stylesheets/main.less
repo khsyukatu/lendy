@@ -1,24 +1,55 @@
 body {
-  padding-top: 60px;
+  padding-top: 35px;
 }
 
-.top_image  {
-  text-align: center;
-  padding: 50px;
-  max-width: 100%;
-  background-image: url("/assets/sofi_img.jpg");
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+@media screen and (min-width: 651px) and (max-width: 2000px) {
+  .topsection {
+    background-position: 20% 0;
+  }
+  
+  .top_image {
+    text-align: center;
+    padding: 50px;
+    min-height: 575px;
+    max-width: 100%;
+    background-image: url("/assets/sofi_img.jpg");
+    background-position: center center;
+    background-size: 1920px 600px;
+    background-repeat: no-repeat; 
+  }
+  
+  .top_image h1 {
+    color: white;
+  }
+
+  .top_image h2 {
+    color: white;
+  }
 }
 
-.top_image h1 {
-  color: white;
+@media screen and (min-width: 0) and (max-width: 650px) {
+  .top_image {
+    text-align: center;
+    padding: 50px;
+    min-height: 377px;
+    max-width: 100%;
+    background-image: url("/assets/sofi_img.jpg");
+    background-position: center center;
+    background-size: 767px 400px;
+    background-repeat: no-repeat; 
+  }
+  .top_image h1 {
+    color: white;
+  }
+
+  .top_image h2 {
+    color: white;
+  }
 }
 
-.top_image h2 {
-  color: white;
-}
+
+
+
 
 .intro {
   text-align: center;
