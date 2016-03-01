@@ -12,7 +12,7 @@
  *
  *
  *= require_self
+ *= require main
  *= require paper/loader
  *= require paper/bootswatch
- *= require main
  */
