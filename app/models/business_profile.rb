@@ -15,4 +15,11 @@
 
 class BusinessProfile < ActiveRecord::Base
   belongs_to :user
+  
+  validates :job_status, presence: true
+  validates :company, presence: true
+  validates :job_type, presence: true
+  validates :job_title, presence: true
+  validates :income, presence: true
+  
 end

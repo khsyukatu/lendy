@@ -29,6 +29,8 @@ class Lender < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   
   has_many :proposals, :dependent => :destroy
+  
+  validates :name, presence: true
 end
 
 

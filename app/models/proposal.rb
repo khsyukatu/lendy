@@ -18,4 +18,9 @@ class Proposal < ActiveRecord::Base
   belongs_to :lender
   belongs_to :borrow_condition
   delegate :user, to: :borrow_condition
+  
+  validates :rate, presence: true
+  validates :rate_type, presence: true
+  validates :amount, presence: true
+  validates :description, presence: true
 end

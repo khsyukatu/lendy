@@ -1,5 +1,12 @@
-<p>Welcome <%= @email %>!</p>
-
-<p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<%= @resource.email %>さま
+<br><br>
+○○に仮登録いただきありがとうございます。<br>
+下記URLをクリックすると、アカウントが認証されます。仮登録のままですと、unistyleにログインでいただくことはできませんのでご注意ください。
+<br>
+<%= link_to confirmation_url(@resource, confirmation_token: @token), confirmation_url(@resource, confirmation_token: @token) %>
+<br><br>
+-------<br>
+○○事務局<br>
+Web:http://~~~~~~~~<br>
+Email:○○○○@○○○○<br>
+-------<br>

@@ -15,4 +15,10 @@
 
 class UserProfile < ActiveRecord::Base
   belongs_to :user
+  
+  validates :school_name, presence: true
+  validates :school_type, presence: true
+  validates :school_department, presence: true
+  validates :school_status, presence: true
+  validates :birthday, presence: true
 end
