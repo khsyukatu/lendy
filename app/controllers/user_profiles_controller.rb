@@ -56,6 +56,6 @@ class UserProfilesController < ApplicationController
   end
   
   def user_profile_params
-    params.require(:user_profile).permit(:school_name, :school_type, :school_department, :school_status, :birthday, :user_id)
+    params.require(:user_profile).permit(:name, :name2, :yomi, :yomi2, :birthday, :tel, :zipcode, :prefecture , :city , :apartment, :user_id)
   end
 end

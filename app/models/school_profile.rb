@@ -13,4 +13,8 @@
 
 class SchoolProfile < ActiveRecord::Base
   belongs_to :user
+  
+  validates :name, presence: true
+  validates :department, presence: true
+  validates :graduation, presence: true
 end

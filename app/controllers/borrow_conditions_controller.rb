@@ -28,7 +28,15 @@ class BorrowConditionsController < ApplicationController
   end
   
   def new
-    @borrow_condition = current_user.build_borrow_condition
+    if current_user.user_profile.blank?
+      redirect_to new_user_profile_path, notice: "ユーザー情報を入力してください。"
+    elsif current_user.school_profile.blank?
+      redirect_to new_school_profile_path, notice: "学校情報を入力してください。"
+    elsif current_user.business_profile.blank?
+      redirect_to new_business_profile_path, notice: "勤務情報を入力してください。"
+    else
+      @borrow_condition = current_user.build_borrow_condition
+    end
   end
   
   def create
