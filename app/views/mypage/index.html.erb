@@ -12,7 +12,11 @@
     <div class="panel panel-default">
       <div class="panel-heading">ユーザー情報</div>
       <div class="panel-body">
-        <%= link_to "ユーザー情報の編集", edit_user_profile_path(current_user.user_profile), class:"btn btn-success btn-block" if current_user.user_profile.present? %>
+        <% if current_user.user_profile.present? %>
+          <%= link_to "ユーザー情報の編集", edit_user_profile_path(current_user.user_profile), class:"btn btn-success btn-block" %>
+        <% else %>
+          <%= link_to "ユーザー情報の追加", new_user_profile_path, class:"btn btn-success btn-block" %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -20,7 +24,11 @@
     <div class="panel panel-default">
       <div class="panel-heading">職務経歴</div>
       <div class="panel-body">
-        <%= link_to "職務経歴の編集", edit_business_profile_path(current_user.business_profile), class:"btn btn-success btn-block" if current_user.business_profile.present? %>
+        <% if current_user.business_profile.present? %>
+          <%= link_to "職務経歴の編集", edit_business_profile_path(current_user.business_profile), class:"btn btn-success btn-block" %>
+        <% else %>
+          <%= link_to "職務経歴の追加", new_business_profile_path, class:"btn btn-success btn-block" %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -28,7 +36,11 @@
     <div class="panel panel-default">
       <div class="panel-heading">借入状況の編集</div>
       <div class="panel-body">
-        <%= link_to "借入状況の編集", edit_borrow_condition_path(current_user.borrow_condition), class:"btn btn-success btn-block" if current_user.borrow_condition.present? %>
+        <% if current_user.borrow_condition.present? %>
+          <%= link_to "借入状況の編集", edit_borrow_condition_path(current_user.borrow_condition), class:"btn btn-success btn-block" %>
+        <% else %>
+          <%= link_to "借入状況の追加", new_borrow_condition_path, class:"btn btn-success btn-block" %>
+        <% end %>
       </div>
     </div>
   </div>
