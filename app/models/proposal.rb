@@ -12,6 +12,7 @@
 #  choiced             :boolean
 #  created_at          :datetime
 #  updated_at          :datetime
+#  completed           :datetime
 #
 
 class Proposal < ActiveRecord::Base
@@ -23,4 +24,12 @@ class Proposal < ActiveRecord::Base
   validates :rate_type, presence: true
   validates :amount, presence: true
   validates :description, presence: true
+  
+  def rate_type_view
+    if self.rate_type == 1
+      return "変動"
+    elsif self.rate_type == 2
+      return "固定"
+    end
+  end  
 end

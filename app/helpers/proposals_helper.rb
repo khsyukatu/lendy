@@ -12,6 +12,7 @@
 #  choiced             :boolean
 #  created_at          :datetime
 #  updated_at          :datetime
+#  completed           :datetime
 #
 
 module ProposalsHelper

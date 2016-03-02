@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301081715) do
+ActiveRecord::Schema.define(version: 20160302085327) do
 
   create_table "borrow_conditions", force: true do |t|
     t.string   "bank"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20160301081715) do
     t.boolean  "choiced"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "completed"
   end
 
   add_index "proposals", ["borrow_condition_id"], name: "index_proposals_on_borrow_condition_id"

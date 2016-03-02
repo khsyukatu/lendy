@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :user_profiles, :school_profiles, :business_profiles, :only => [:new, :create, :edit, :update, :destroy]
   resources :borrow_conditions, :proposals
   post 'proposals/choice_proposal'
+  post 'proposals/complete_proposal'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

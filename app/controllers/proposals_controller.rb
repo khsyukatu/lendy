@@ -12,6 +12,7 @@
 #  choiced             :boolean
 #  created_at          :datetime
 #  updated_at          :datetime
+#  completed           :datetime
 #
 
 class ProposalsController < ApplicationController
@@ -65,7 +66,14 @@ class ProposalsController < ApplicationController
   def choice_proposal
     @proposal = current_user.proposals.find(params[:id])
     @proposal.update_attributes(choiced: true)
-    redirect_to :mypage
+    redirect_to :mypage, notice: "提案を承認しました。金融機関から直接メールもしくはお電話でご連絡がきます。"
+  end
+  
+  def complete_proposal
+    @proposal = current_lender.proposals.find(params[:id])
+    @proposal.update_attributes(completed: Time.now)
+    FormMailer.proposal_complete(@proposal).deliver
+    redirect_to :dashboard, notice: "契約を完了しました。"
   end
   
   private
@@ -74,6 +82,6 @@ class ProposalsController < ApplicationController
   end
   
   def proposal_params
-    params.require(:proposal).permit(:borrow_condition_id, :lender_id, :rate, :rate_type, :amount, :description, :choiced)
+    params.require(:proposal).permit(:borrow_condition_id, :lender_id, :rate, :rate_type, :amount, :description, :choiced, :completed)
   end
 end

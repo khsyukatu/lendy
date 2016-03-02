@@ -2,27 +2,37 @@
 <%= link_to "案件一覧", borrow_conditions_path, class:"btn btn-success" %>
 
 <h3>提案済み案件一覧</h3>
-<table class="table table-hover">
+<table class="table table-hover text-center">
   <thead>
     <tr class="success">
-      <th>メールアドレス</th>
-      <th>金融機関名</th>
-      <th>借入金額</th>
-      <th>借入タイプ</th>
-      <th>借入金利</th>
-      <th></th>
+      <th class="text-center">提案金額</th>
+      <th class="text-center">提案借入タイプ</th>
+      <th class="text-center">提案金利</th>
+      <th class="text-center"></th>
+      <th class="text-center"></th>
     </tr>
   </thead>
   <tbody>
     <% @proposals.each do |proposal| %>
     <tr>
-      <td><%= proposal.lender.name %></td>
       <td><%= proposal.amount %></td>
-      <td><%= proposal.rate_type %></td>
+      <td><%= proposal.rate_type_view %></td>
       <td><%= proposal.rate %></td>
       <td><%= link_to "詳細", proposal_path(proposal), class:"btn btn-success" %></td>
-      <td><%= link_to "承諾済み", proposal_path(proposal), class:"btn btn-primary", disabled: true if proposal.choiced == true %></td>
+      
+      <% if proposal.choiced == true %>
+        <% if proposal.completed.present? %>
+          <td><%= button_to "契約完了済み", dashboard_path, disabled: true, class:"btn btn-primary" %></td>
+        <% else %>
+          <td><%= button_to "契約を完了する",proposals_complete_proposal_path(id: proposal), data: { confirm: "ステータスを契約完了に変更しますがよろしいですか？"},class:"btn btn-primary" %></td>
+        <% end %>
+      <% elsif proposal.borrow_condition.proposal_choiced? %>
+        <td><%= button_to "契約済み", dashboard_path,disabled: true, class:"btn btn-danger" %></td>
+      <% else %>
+        <td></td>
+      <% end %>
     </tr>
+    
     <% end %>
   </tbody>
 </table>
