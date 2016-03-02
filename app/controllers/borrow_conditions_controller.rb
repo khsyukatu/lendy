@@ -15,13 +15,13 @@
 class BorrowConditionsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_filter :authenticate_lender!, only: [:show, :index]
-  before_action :set_borrow_condition, only: [:show, :edit, :update, :destroy]
   
   def index
     @borrow_conditions = BorrowCondition.all
   end
   
   def show
+    @borrow_condition = BorrowCondition.find(params[:id])
     if @borrow_condition.proposal_choiced?
       redirect_to borrow_conditions_path, alert: "契約済みの借入状況です。"
     end
@@ -49,9 +49,11 @@ class BorrowConditionsController < ApplicationController
   end
   
   def edit
+    @borrow_condition = current_user.borrow_condition
   end
   
   def update
+    @borrow_condition = current_user.borrow_condition
     if @borrow_condition.update(borrow_condition_params)
       redirect_to root_path, notice: "借入状況を更新しました。"
     else
@@ -60,14 +62,12 @@ class BorrowConditionsController < ApplicationController
   end
   
   def destroy
+    @borrow_condition = current_user.borrow_condition
     @borrow_condition.destroy
     redirect_to root_path, notice: "借入状況を削除しました。"
   end
   
   private
-  def set_borrow_condition
-    @borrow_condition = current_user.borrow_condition
-  end
   
   def borrow_condition_params
     params.require(:borrow_condition).permit(:bank, :amount, :rate_type, :rate)

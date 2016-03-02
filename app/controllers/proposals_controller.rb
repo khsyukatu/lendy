@@ -16,7 +16,7 @@
 
 class ProposalsController < ApplicationController
   before_filter :authenticate_lender!, only: [:new, :create, :edit, :update, :destroy]
-  before_filter :authenticate_user!, only: [:show, :index, :choice_proposal]
+  before_filter :authenticate_user!, only: [:index, :choice_proposal]
   before_action :set_proposal, only: [:edit, :update, :destroy]
   
   def index
@@ -24,7 +24,13 @@ class ProposalsController < ApplicationController
   end
   
   def show
-    @proposal = current_user.proposals.find(params[:id])
+    if user_signed_in?
+      @proposal = current_user.proposals.find(params[:id])
+    elsif lender_signed_in?
+      @proposal = current_lender.proposals.find(params[:id])
+    else
+      redirect_to root_path, alert: "このページにはアクセスすることができません"
+    end
   end
   
   def new

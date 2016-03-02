@@ -25,7 +25,7 @@
       <div class="panel-heading">学校情報</div>
       <div class="panel-body">
         <% if current_user.school_profile.present? %>
-          <%= link_to "学校情報の編集", edit_borrow_condition_path(current_user.school_profile), class:"btn btn-success btn-block" %>
+          <%= link_to "学校情報の編集", edit_school_profile_path(current_user.school_profile), class:"btn btn-success btn-block" %>
         <% else %>
           <%= link_to "学校情報の編集", new_school_profile_path, class:"btn btn-success btn-block" %>
         <% end %>
