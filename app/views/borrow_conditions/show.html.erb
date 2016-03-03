@@ -12,10 +12,12 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= @borrow_condition.user.email %></td>
+      <td><%= @borrow_condition.user.school_profile.name %></td>
+      <td><%= @borrow_condition.user.business_profile.company %></td>
+      <td><%= @borrow_condition.user.business_profile.income %></td>
       <td><%= @borrow_condition.bank %></td>
       <td><%= @borrow_condition.amount %></td>
-      <td><%= @borrow_condition.rate_type %></td>
+      <td><%= @borrow_condition.rate_type_view %></td>
       <td><%= @borrow_condition.rate %></td>
     </tr>
   </tbody>

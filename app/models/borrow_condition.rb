@@ -26,4 +26,12 @@ class BorrowCondition < ActiveRecord::Base
       true
     end
   end
+  
+  def rate_type_view
+    if self.rate_type == 1
+      return "変動"
+    elsif self.rate_type == 2
+      return "固定"
+    end
+  end  
 end
