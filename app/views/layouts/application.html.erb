@@ -22,15 +22,30 @@
       <a class="navbar-brand" href="#">Lendy</a>
     </div>
     <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
+      <% if user_signed_in? %>
+        <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "マイページ", mypage_path %></li>
           <li><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-primary navbar-btn" %></li>
-        <% else %>
+        </ul>
+      <% elsif lender_signed_in? %>
+        <ul class="nav navbar-nav">
+          <li>
+            <%= link_to dashboard_path do %> 
+              <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+            <% end %>
+          </li>
+          <li>
+            <%= link_to borrow_conditions_path do  %>
+              <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 案件一覧
+            <% end %>
+          </li>
+        </ul>
+      <% else %>
+        <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "ログイン", new_user_session_path %></li>
           <li><%= button_to "お申し込み", new_user_registration_path, class:"btn btn-primary navbar-btn", method: :get %></li>
-        <% end %>
-      </ul>
+        </ul>
+      <% end %>
     </div><!--/.nav-collapse -->
   </div>
 </div>
