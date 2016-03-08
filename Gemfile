@@ -46,3 +46,4 @@ gem 'less-rails'
 gem 'devise'
 gem 'annotate'
 gem "font-awesome-rails"
+gem 'seed-fu'

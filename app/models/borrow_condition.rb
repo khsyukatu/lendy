@@ -26,6 +26,12 @@ class BorrowCondition < ActiveRecord::Base
       true
     end
   end
+
+  def proposaled?(lender)
+    if self.proposals.where(lender_id: lender).present?
+      true
+    end
+  end
   
   def rate_type_view
     if self.rate_type == 1

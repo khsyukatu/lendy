@@ -4,6 +4,7 @@
     <tr class="success">
       <th class="text-center">出身大学</th>
       <th class="text-center">勤務先</th>
+      <th class="text-center">雇用形態</th>
       <th class="text-center">年収</th>
       <th class="text-center">借入金融機関</th>
       <th class="text-center">借入金額</th>
@@ -17,14 +18,16 @@
     <tr>
       <td><%= borrow_condition.user.school_profile.name %></td>
       <td><%= borrow_condition.user.business_profile.company %></td>
-      <td><%= borrow_condition.user.business_profile.income %></td>
+      <td><%= borrow_condition.user.business_profile.job_type_view %></td>
+      <td><%= borrow_condition.user.business_profile.income %>万円</td>
       <td><%= borrow_condition.bank %></td>
-      <td><%= borrow_condition.amount %></td>
+      <td><%= borrow_condition.amount %>万円</td>
       <td><%= borrow_condition.rate_type_view %></td>
       <td><%= borrow_condition.rate %></td>
       <% if borrow_condition.proposal_choiced? %>
         <td><%= link_to "契約済み", borrow_condition_path(borrow_condition), class:"btn btn-danger", disabled: true %></td>
-        
+      <% elsif borrow_condition.proposaled?(current_lender) %>
+        <td><%= link_to "提案済み", borrow_condition_path(borrow_condition), class:"btn btn-primary" %><td>
       <% else %>
         <td><%= link_to "詳細", borrow_condition_path(borrow_condition), class:"btn btn-success" %></td>
       <% end %>

@@ -22,4 +22,16 @@ class BusinessProfile < ActiveRecord::Base
   validates :job_title, presence: true
   validates :income, presence: true
   
+  def job_type_view
+    if self.job_type == 1
+      return "正社員"
+    elsif self.job_type == 2
+      return "事務・一般職"
+    elsif self.job_type == 3
+      return "契約社員"
+    elsif self.job_type == 4
+      return "アルバイト"
+    end
+  end  
+  
 end

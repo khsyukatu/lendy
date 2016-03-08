@@ -1,12 +1,16 @@
 <h2>借入詳細</h2>
-<table class="table table-hover">
+<table class="table table-hover text-center">
   <thead>
     <tr class="success">
-      <th>メールアドレス</th>
-      <th>金融機関名</th>
-      <th>借入金額</th>
-      <th>借入タイプ</th>
-      <th>借入金利</th>
+      <th class="text-center">出身大学</th>
+      <th class="text-center">勤務先</th>
+      <th class="text-center">雇用形態</th>
+      <th class="text-center">年収</th>
+      <th class="text-center">借入金融機関</th>
+      <th class="text-center">借入金額</th>
+      <th class="text-center">借入タイプ</th>
+      <th class="text-center">借入金利</th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -14,13 +18,18 @@
     <tr>
       <td><%= @borrow_condition.user.school_profile.name %></td>
       <td><%= @borrow_condition.user.business_profile.company %></td>
-      <td><%= @borrow_condition.user.business_profile.income %></td>
+      <td><%= @borrow_condition.user.business_profile.job_type_view %></td>
+      <td><%= @borrow_condition.user.business_profile.income %>万円</td>
       <td><%= @borrow_condition.bank %></td>
-      <td><%= @borrow_condition.amount %></td>
+      <td><%= @borrow_condition.amount %>万円</td>
       <td><%= @borrow_condition.rate_type_view %></td>
       <td><%= @borrow_condition.rate %></td>
     </tr>
   </tbody>
 </table>
 
+<% if @borrow_condition.proposaled?(current_lender) %>
+  <%= link_to "提案済み", new_proposal_path(borrow_condition_id: @borrow_condition), class:"btn btn-primary btn-block", disabled: true %>
+<% else %>
 <%= link_to "提案する", new_proposal_path(borrow_condition_id: @borrow_condition), class:"btn btn-success" %>
+<% end %>
